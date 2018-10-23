@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<h1>Descripcion de la Tarea</h1>
+<table>
+		<thead>
+				<th>Titulo</th>
+				<th>Procentaje</th>
+				<th>Estado</th>
+				<th>Horas</th>
+				<th>Proyecto</th>
+				<th>Integrante encargado</th>
+				<th>Supervisor</th>
+		
+			</thead>
+
+<div>
+	<thead>
+	<tr>
+		<td>{{ data.title }} </td>
+		<td>{{ data.percent }} %</td>
+		<td>{{ data.state }}</td>
+		<td>{{ data.hours }}</td>
+		<td>{{ data.project_id }}</td>
+		<td>{{ data.user_in_charge }}</td>
+		<td>{{ data.user_supervisor }}</td>
+	</tr>
+</thead>
+</div>
+</table>
+ <center>
+
+		<div class="5u">
+			
+<a href="{% url 'task_comments' data.id %}" class="button fit small">Comentar Tarea</a>
+
+<a href="{% url 'task_errors' data.id %}" class="button fit small">Comentar Error</a>
+</div>
+</center>
+{% endblock %}

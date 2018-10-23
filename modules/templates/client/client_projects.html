@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<div class="table-wrapper">
+		<h1 class="center">Proyectos</h1>
+	<h1>Cliente: <td>{{ data_.name }}</td></h1>
+</div>
+</table>
+
+<table>
+{% for i in data %}
+<thead>
+		<div>
+		<tr>
+			
+			<th>Nombre</th>
+			<th>Porcentaje</th>
+			<th>Archivo pdf</th>
+			<th>Fecha de creacion</th>
+		
+		
+		</tr>
+		</div>
+	</thead>
+	
+	<tbody>
+		<div>
+		<tr>
+		
+		<td>{{ i.name }}</td>
+		<td>{{ i.percent }}</td>
+		<td>{{ i.file }}</td>
+		<td>{{ i.created_at }}</td>
+		<th>
+			
+			<a href="{% url 'view_project' i.id %}" class="button small">Ver</a>
+		</th>
+		<th>
+			<a href="{% url 'update_project' i.id %}" class="button small">Editar</a>
+		</th>
+		
+		<th>
+			<a href="{% url 'delete_project' i.id %}" class="button small">Eliminar</a>
+		</th>
+		
+	</tr>
+	</div>
+
+
+{% endfor %}
+</tbody>
+</table>
+<div class="12u">
+
+<a href="{% url 'create_project' %}" class="button small">Nuevo Proyecto</a>
+
+{% endblock %}

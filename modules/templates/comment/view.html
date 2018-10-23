@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<table>
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Comentario</th>
+					<th>Tarea</th>
+			
+				
+				</tr>
+			</thead>
+
+
+
+<div>
+	<tr>
+    	<td>{{ data.title }}</td>
+		<td>{{ data.comment }} </td>
+		<td>{{ data.task_id }}</td>
+	</tr>
+</div>
+
+<a href="{% url 'update_comment' data.id %}" class="button special">Edit</a>
+<a href="{% url 'delete_comment' data.id %}" class="button special">Delete</a>
+</table>
+{% endblock %}

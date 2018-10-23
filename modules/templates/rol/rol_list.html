@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+
+<table border="10">
+		<thead>
+				<tr> 
+					
+					<th>Rol</th>
+					<th>Usuario</th>
+					<th>Proyecto</th>
+				
+				</tr>
+			</thead>
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.rol }}</td>
+		<td>{{ i.user_id }}</td>
+    <td>{{ i.project_id }}</td>
+		<td>
+			<a href="{% url 'view_rol' i.id %}" class="button special">View</a>
+		</td>
+		<td>
+			<a href="{% url 'update_rol' i.id %}" class="button special">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_rol' i.id %}" class="button special">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_rol' %}" class="button special">New rol</a>
+
+{% endblock %}

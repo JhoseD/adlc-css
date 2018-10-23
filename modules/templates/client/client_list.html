@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<div class="table-wrapper">
+<h1 class="center">Lista de Clientes</h1>
+<table >
+		<thead>
+				<tr> 
+					
+					<th>Nombre</th>
+					<th>Telefono</th>
+					<th>Correo</th>
+					<th>Direccion</th>
+				
+				</tr>
+			</thead>
+<tbody>
+{% for i in data %}		
+<tr>
+		<td>{{ i.name }}</td>
+		<td>{{ i.telephone }}</td>
+    	<td>{{ i.email }}</td>
+		<td>{{ i.address }}</td>
+		
+			<th><a href="{% url 'view_client' i.id %}"  class="button small">Detalle</a></th>
+		
+			<th><a href="{% url 'update_client' i.id %}" class="button small">Editar</a></th>
+		
+			<th><a href="{% url 'delete_client' i.id %}" class="button small">Eliminar</a></th>
+		
+	</tr> 
+
+
+{% endfor %}
+</tbody>
+</table>
+<center>
+<div class="12u">
+<ul>
+<a href="{% url 'create_client' %}" class="button small">Nuevo cliente</a>
+</ul>
+</div>
+</center>
+{% endblock %}

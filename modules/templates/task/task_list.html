@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+
+<table border="10">
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Porcentaje</th>
+					<th>Estado</th>
+					<th>Horas</th>
+					<th>Proyecto</th>
+					<th>Integrante Encargado</th>
+					<th>Supervisor</th>
+				
+				</tr>
+			</thead>
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.title }}</td>
+		<td>{{ i.percent }}</td>
+		<td>{{ i.state }}</td>
+		<td>{{ i.hours }}</td>
+		<td>{{ i.project_id }}</td>
+		<td>{{ i.user_in_charge }}</td>
+		<td>{{ i.user_supervisor }}</td>
+		<td>
+			<a href="{% url 'view_task' i.id %}" class="button special">View</a>
+		</td>
+		<td>
+			<a href="{% url 'update_task' i.id %}" class="button special">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_task' i.id %}" class="button special">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_task' %}" class="button special">Agregar Tarea</a>
+
+{% endblock %}

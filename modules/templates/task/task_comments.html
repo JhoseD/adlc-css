@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<table>
+<div>
+		<thead>
+			<th>Titulo</th>
+			<th>Porcentaje</th>
+			<th>Estado</th>
+			<th>Horas</th>
+			<th>Proyecto</th>
+			<th>Usuario a Cargo</th>
+			<th>Supervisor</th>
+	
+		</thead>
+	
+	</div>
+
+<div>
+	<ul>
+		<td>{{ data_.title }}</td>
+    	<td>{{ data_.percent }} % </td>
+		<td>{{ data_.state }}</td>
+		<td>{{ data_.hours }}</td>
+		<td>{{ data_.project_id }}</td>
+		<td>{{ data_.user_in_charge }}</td>
+		<td>{{ data_.user_supervisor }}</td>
+	</ul>
+</div>
+</table>
+{% for i in data %}
+
+<table border="10">
+		<div>
+				<thead>
+					<th>Titulo</th>
+					<th>Comentario</th>
+					<th>Tarea</th>
+				</thead>
+			
+			</div>
+	<tr>
+		<td>{{ i.title }}</td>
+		<td>{{ i.comment }}</td>
+		<td>{{ i.task_id }}</td>
+		<td>
+			<a href="{% url 'view_comment' i.id %}" class="button fit small">View</a>
+		</td>
+		
+		<td>
+			<a href="{% url 'update_comment' i.id %}" class="button fit small">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_comment' i.id %}" class="button fit small">Delete</a>
+		</td>
+		
+	</tr>
+
+{% endfor %}
+</table>
+<div class="3u">
+<a href="{% url 'create_comment' %}" class="button fit small">Agregar Comentario</a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+
+<table border="10">
+
+<thead>
+		<div>
+			 
+			<th>Titulo</th>
+			<th>Fecha de inicio</th>
+			<th>Fecha de finalizacion</th>
+			<th>Proyecto</th>
+			
+		 </div>
+		</thead>
+		{% for i in data %}
+	<tr>
+		<td>{{ i.title }}</td>
+		<td>{{ i.start_date }}</td>
+		<td>{{ i.end_date }}</td>
+		<td>{{ i.project_id }}</td>
+		<td>
+			<a href="{% url 'view_requirement' i.id %}" class="button small">View</a>
+		</td>
+		<td>
+			<a href="{% url 'update_requirement' i.id %}" class="button small">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_requirement' i.id %}" class="button small">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_requirement' %}" class="button small">Nuevo Requerimiento</a>
+
+{% endblock %}

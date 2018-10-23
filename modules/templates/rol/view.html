@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<table>
+<thead>
+		<tr> 
+			
+			<th>Rol</th>
+			<th>Integrante del equipo</th>
+			<th>Proyecto</th>
+			
+		</tr>
+	</thead>
+
+<div>
+	<tr>
+    	<td>{{ data.rol }}</td>
+		<td>{{ data.user_id }} </td>
+		<td>{{ data.project_id }}</td>
+	</tr>
+</div>
+
+{% comment %}
+<a href="{% url 'update_rol' data.id %}" class="button small">Edit</a>
+<a href="{% url 'delete_rol' data.id %}" class="button small">Delete</a>
+{% endcomment %}
+</table>
+{% endblock %}

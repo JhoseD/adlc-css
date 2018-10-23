@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+<h1>Proyectos</h1>
+<table border="10">
+
+<thead>
+<div>
+	 
+	<th>nombre</th>
+	<th>porcentaje</th>
+	<th>archivo</th>
+	<th>fecha de creacion</th>
+	<th>cliente</th>
+ </div>
+</thead>
+{% for i in data %}
+<tbody>
+	
+		<td>{{ i.name }}</td>
+		<td>{{ i.percent }}</td>
+		<td>{{ i.file }}</td>
+		<td>{{ i.created_at }}</td>
+		<td>{{ i.client_id }}</td>
+		<td>
+			<a href="{% url 'view_project' i.id %}" class="button small">View</a>
+		</td>
+		<td>
+			<a href="{% url 'update_project' i.id %}" class="button small">Edit</a>
+		</td>
+	
+		<td>
+			<a href="{% url 'delete_project' i.id %}"class="button small">Delete</a>
+		</td>
+		
+	
+
+{% endfor %}
+</tbody>
+</table>
+
+<a href="{% url 'create_project' %}" class="button small">Nuevo Proyecto</a>
+
+{% endblock %}

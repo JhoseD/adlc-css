@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<h1>Proyecto</h1>
+<table>
+	
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Porcentaje</th>
+			<th>Archivo</th>
+			<th>Fecha de creacion</th>
+			<th>Nombre del cliente</th>
+		</tr>
+
+
+	</thead>
+<div>
+	<tr>
+    	<td>{{ data_.name }}</td>
+		<td>{{ data_.percent }} %</td>
+		<td>{{ data_.file }}</td>
+		<td>{{ data_.created_at }}</td>
+		<td>{{ data_.client_id }}</td>
+	</tr>
+</div>
+</table>
+
+<h1>Tareas del proyecto</h1>
+
+<table border="10">
+{% for i in data %}
+<div>
+	<thead>
+		<th>Procentaje</th>
+		<th>Estado</th>
+		<th>Horas</th>
+		<th>Proyecto</th>
+		<th>Integrante encargado</th>
+		<th>Supervisor</th>
+
+	</thead>
+
+</div>
+
+
+	<tr>
+		<td>{{ i.percent }}</td>
+		<td>{{ i.state }}</td>
+		<td>{{ i.hours }}</td>
+		<td>{{ i.project_id }}</td>
+		<td>{{ i.user_in_charge }}</td>
+		<td>{{ i.user_supervisor }}</td>
+		<td>
+			<a href="{% url 'view_task' i.id %}" class="button fit small">Detalle</a>
+		</td>
+
+{% for r in rol_ %}
+
+	{% if user == r.user_id %}
+		
+		{% if r.rol == 'Scrum Master' %}
+
+			{% if r.project_id == data_ %}
+				<td>
+					<a href="{% url 'update_task' i.id %}" class="button fit small">Editar</a>
+				</td>
+				<td>
+					<a href="{% url 'delete_task' i.id %}" class="button fit small">Eliminar</a>
+				</td>
+			{% endif %}
+
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
+
+	</tr>
+
+{% endfor %}
+</table>
+
+{% for r in rol_ %}
+
+	{% if user == r.user_id %}
+		
+		{% if r.rol == 'Scrum Master' %}
+
+			{% if r.project_id == data_ %}
+				<a href="{% url 'create_task' %}" class="button fit small">Nueva Tarea</a>
+			{% endif %}
+
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
+
+{% endblock %}

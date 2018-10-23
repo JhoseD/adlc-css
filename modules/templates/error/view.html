@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<table>
+<thead>
+		<tr> 
+			
+			<th>Titulo</th>
+			<th>Descripcion</th>
+			<th>Estado</th>
+			<th>Tarea</th>
+		
+		</tr>
+	</thead>
+<div>
+	<tr>
+    	<th>{{ data.title }}</th>
+		<th>{{ data.description }}</th>
+		<th>{{ data.state }}</th>
+		<th>{{ data.task_id }}</th>
+	</tr>
+</div>
+
+<a href="{% url 'update_error' data.id %}" class="button fit small">Editar</a>
+<a href="{% url 'delete_error' data.id %}" class="button fit small">Eliminar</a>
+</table>
+{% endblock %}

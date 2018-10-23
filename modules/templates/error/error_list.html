@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+
+<table border="10">
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>descripcion</th>
+					<th>Estado</th>
+					<th>Tarea</th>
+				
+				</tr>
+			</thead>
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.title }}</td>
+		<td>{{ i.description }}</td>
+		<td>{{ i.state }}</td>
+		<td>{{ i.task_id }}</td>
+		<td>
+			<a href="{% url 'view_error' i.id %}" class="button fit small">Detalle</a>
+		</td>
+		<td>
+			<a href="{% url 'update_error' i.id %}" class="button fit small">Editar</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_error' i.id %}" class="button fit small">Eliminar</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_error' %}">Agregar Error</a>
+
+{% endblock %}

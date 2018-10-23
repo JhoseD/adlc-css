@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+
+<div>
+	<ul>
+    	<li>{{ data.title }}</li>
+		<li>{{ data.description }}</li>
+		<li>{{ data.start_date }} </li>
+		<li>{{ data.end_date }}</li>
+		<li>{{ data.project_id }}</li>
+	</ul>
+</div>
+
+<a href="{% url 'update_requirement' data.id %}">Edit</a>
+<a href="{% url 'delete_requirement' data.id %}">Delete</a>
+
+{% endblock %}

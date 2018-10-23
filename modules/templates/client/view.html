@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+
+<div class="table-wrapper">
+		<h1 class="center">Detalle del Cliente</h1>
+		<table >
+				<thead>
+						<tr>
+							
+							<th>Nombre</th>
+							<th>Telefono</th>
+							<th>Correo</th>
+							<th>Direccion</th>
+						
+						</tr>
+					</thead>
+		<tbody>
+		<tr>
+    	<td>{{ data.name }}</td>
+		<td>{{ data.telephone }} </td>
+		<td>{{ data.email }}</td>
+		<td>{{ data.address }}</td>
+	
+
+
+<th><a href="{% url 'update_client' data.id %} " class="button small">Edit</a></th>
+<th><a href="{% url 'delete_client' data.id %}"class="button small">Delete</a></th>
+
+</tbody>
+</tr>
+</table>
+		<center>
+		<div class="12u">
+		<ul>
+		<a href="{% url 'client_projects' data.id %}" class="button">Proyectos del cliente</a>
+		</ul>
+		</div>
+		</center>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% load static %}
+
+
+<nav id="menu">
+		<ul class="links">
+			<li><a href="{% url 'index' %}">Inicio</a></li>
+			{% if user.is_active %}
+				<li><a href="{% url 'signup' %}">Sign up</a></li>
+			{% endif %}
+			<li><a href="{% url 'list_client' %}">Clientes</a></li>
+			<li><a href="{% url 'list_project' %}">Proyectos</a></li>
+		
+		</ul> 
+		
+	</nav>
+	<header id="header">
+			<nav class="left">
+				<a href="#menu"><span>Menu</span></a>
+			</nav>
+			<a href="{% url 'index' %}" class="logo">Scrum Hamster</a>
+			
+			<nav class="right">
+				{% if user.is_active == False %}
+					<a href="{% url 'login' %}" class="button fit">login</a>
+				{% endif %}
+				{% if user.is_active %}
+				<a href="{% url 'logout' %}" class="button fit">logout</a>
+				{% endif %}
+				</nav>
+				
+		</header>
+		<section id="main" class="wrapper">
+				<div class="inner">
+					<header class="align-center">
+						{% block cont%}
+							{% endblock %}
+						</div>
+					</header>
+				</section> 
+	<head>
+		<title>Scrum</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css'%}" />
+	</head>
+	<body>
+		
+			<div class="flex-item right">
+			
+		</div>
+
+
+		<section class="wrapper">
+				<div class="inner flex">
+				</section>
+				<th>	
+				
+			</th>
+				</div>
+				
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js'%}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js'%}"></script>
+			<script src="{% static 'assets/js/skel.min.js'%}"></script>
+			<script src="{% static 'assets/js/util.js'%}"></script>
+			<script src="{% static 'assets/js/main.js'%}"></script>
+
+	</body>

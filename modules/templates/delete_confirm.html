@@ -1,0 +1,6 @@
+<form method="post">
+  {% csrf_token %}
+  <label>Are you sure you want to remove this item</label>
+  <button type="submit">Confirm</button>
+  <a href="{% url 'index' %}">Cancel</a>
+</form>

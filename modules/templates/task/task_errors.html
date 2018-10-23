@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block cont %}
+<h1>Errores en las tareas</h1>
+<table>
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Porcentaje</th>
+					<th>Estado</th>
+					<th>Horas</th>
+					<th>Proyecto</th>
+					<th>Integrante a cargo</th>
+					<th>Supervisor</th>
+				
+				</tr>
+			</thead>
+
+<div>
+	<tr>
+		<td>{{ data_.title }}</td>
+    	<td>{{ data_.percent }} % </td>
+		<td>{{ data_.state }}</td>
+		<td>{{ data_.hours }}</td>
+		<td>{{ data_.project_id }}</td>
+		<td>{{ data_.user_in_charge }}</td>
+		<td>{{ data_.user_supervisor }}</td>
+	</tr>
+</div>
+</table>
+
+
+<table border="10">
+
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Descripcion</th>
+					<th>Estado</th>
+					<th>Tarea</th>
+					
+				</tr>
+			</thead>
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.title }}</td>
+		<td>{{ i.description }}</td>
+		<td>{{ i.state }}</td>
+		<td>{{ i.task_id }}</td>
+		<td>
+			<a href="{% url 'view_error' i.id %}" class="button small">Detalle</a>
+		</td>
+	
+		<td>
+			<a href="{% url 'update_error' i.id %}" class="button small">Editar</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_error' i.id %}" class="button small">Eliminar</a>
+		</td>
+	
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_error' %}" class="button small">Agregar error</a>
+
+{% endblock %}
